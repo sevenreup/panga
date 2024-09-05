@@ -1,0 +1,17 @@
+scaffold_name: "Go Web App"
+description: "A basic Go web application structure"
+params:
+  - name: "app_name"
+    description: "The name of the application"
+    type: "string"
+  - name: "db_type"
+    description: "Type of database (mysql, postgres)"
+    type: "string"
+    default: "mysql"
+templates:
+  - source: "templates/main.go.tpl"
+    destination: "{{.AppName}}/main.go"
+  - source: "templates/config.go.tpl"
+    destination: "{{.AppName}}/config/{{.DBType}}.go"
+  - source: "templates/readme.md.tpl"
+    destination: "{{.AppName}}/README.md"
