@@ -1,6 +1,6 @@
 # Panga
 
-Panga is a simple and efficient scaffolding tool designed to help developers quickly set up project structures and generate files for various types of projects.
+Panga is a simple and efficient (not really) scaffolding tool designed to help developers (me) quickly set up project structures and generate files for various types of projects (just like 2).
 
 ## Features
 
