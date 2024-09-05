@@ -28,7 +28,7 @@ type Template struct {
 }
 
 func TemplateRun() {
-	yamlFile, err := ioutil.ReadFile("./template/go/go-sveltekit/template.yaml")
+	yamlFile, err := ioutil.ReadFile("./templates/go/go-sveltekit/template.yaml")
 	if err != nil {
 		fmt.Println("Error reading YAML file:", err)
 		return
