@@ -8,6 +8,13 @@ params:
     description: "Type of database (mysql, postgres)"
     type: "string"
     default: "mysql"
+  - name: "select_sample"
+    description: "The name of the application"
+    type: "select"
+    values: "a,b,c"
+  - name: "number_sample"
+    description: "Type of database (mysql, postgres)"
+    type: "number"
 templates:
   - source: "templates/main.go.tpl"
     destination: "{{.AppName}}/main.go"
@@ -15,3 +22,7 @@ templates:
     destination: "{{.AppName}}/config/{{.DBType}}.go"
   - source: "templates/readme.md.tpl"
     destination: "{{.AppName}}/README.md"
+steps:
+  - name: generate svelte
+    uses: package-manager
+    run: create svelte {{.AppName}}

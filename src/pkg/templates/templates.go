@@ -5,43 +5,25 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/sevenreup/panga/src/pkg/engine"
 	"gopkg.in/yaml.v3"
 )
 
-type Scaffold struct {
-	Name        string     `yaml:"scaffold_name"`
-	Description string     `yaml:"description"`
-	Params      []Param    `yaml:"params"`
-	Templates   []Template `yaml:"templates"`
-}
-
-type Param struct {
-	Name        string `yaml:"name"`
-	Description string `yaml:"description"`
-	Type        string `yaml:"type"`
-	Default     string `yaml:"default"`
-}
-
-type Template struct {
-	Source      string `yaml:"source"`
-	Destination string `yaml:"destination"`
-}
-
-func TemplateRun() {
-	yamlFile, err := ioutil.ReadFile("./templates/go/go-sveltekit/template.yaml")
+func GetTemplate(template string) *engine.Scaffold {
+	yamlFile, err := ioutil.ReadFile(template)
 	if err != nil {
 		fmt.Println("Error reading YAML file:", err)
-		return
+		return nil
 	}
 
-	var scaffold Scaffold
+	var scaffold engine.Scaffold
 	err = yaml.Unmarshal(yamlFile, &scaffold)
 	if err != nil {
 		fmt.Println("Error unmarshalling YAML:", err)
-		return
+		return nil
 	}
 
-	fmt.Printf("Scaffold: %+v\n", scaffold)
+	return &scaffold
 }
 
 func FetchTemplates() []string {
